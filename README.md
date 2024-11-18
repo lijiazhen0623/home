@@ -226,3 +226,13 @@ if (type == 0) {
 - [教书先生 API](https://api.oioweb.cn/doc/weather/GetWeather)
 - [高德开放平台](https://lbs.amap.com/)
 - [Hitokoto 一言](https://hitokoto.cn/)
+
+## Star History
+
+<a href="https://star-history.com/#lijiazhen0623/home&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=lijiazhen0623/home&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=lijiazhen0623/home&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=lijiazhen0623/home&type=Date" />
+ </picture>
+</a>
