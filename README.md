@@ -96,7 +96,7 @@ chmod +x deploy.sh
 {
   "icon": "Blog",
   "name": "博客",
-  "link": "https://blog.imsyy.top/"
+  "link": "https://blog.jiazhen.wang/"
 },
 ```
 
@@ -151,7 +151,7 @@ const siteIcon = {
 
 ```bash
 # 歌曲 API 地址
-VITE_SONG_API = "https://api-meting.imsyy.top"
+VITE_SONG_API = ""
 # 歌曲服务器 ( netease-网易云, tencent-qq音乐 )
 VITE_SONG_SERVER = "netease"
 # 播放类型 ( song-歌曲, playlist-播放列表, album-专辑, search-搜索, artist-艺术家 )
