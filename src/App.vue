@@ -111,7 +111,7 @@ onMounted(() => {
       grouping: true,
       duration: 2000,
     });
-    return true;
+    return false;
   };
 
   // 鼠标中键事件
