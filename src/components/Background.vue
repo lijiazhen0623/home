@@ -1,6 +1,7 @@
 <template>
   <div :class="store.backgroundShow ? 'cover show' : 'cover'" @dblclick="dblclick()">
-    <img
+    <transition name="fade" mode="out-in" :key="bgUrl">
+      <img
       v-show="store.imgLoadStatus"
       :src="bgUrl"
       class="bg"
@@ -9,6 +10,7 @@
       @error.once="imgLoadError"
       @animationend="imgAnimationEnd"
     />
+    </transition>
     <div :class="store.backgroundShow ? 'gray hidden' : 'gray'" />
     <Transition name="fade" mode="out-in">
       <a
@@ -31,7 +33,9 @@ import { Error } from "@icon-park/vue-next";
 
 const store = mainStore();
 const bgUrl = ref(null);
+const imgKey = ref(1);
 const imgTimeout = ref(null);
+const bgInterval = ref(null); // 存储定时器 ID
 const emit = defineEmits(["loadComplete"]);
 
 // 壁纸随机数
@@ -54,6 +58,8 @@ const changeBg = (type) => {
   } else {
     bgUrl.value = "https://api.rls.icu/adaptive";
   }
+  imgKey.value = imgKey.value + 1
+  console.log("壁纸加载...");
 };
 
 // 图片加载完成
@@ -129,10 +135,16 @@ function download(href, name) {
 onMounted(() => {
   // 加载壁纸
   changeBg(store.coverType);
+
+  // 重新加载一次背景
+  bgInterval.value = setInterval(() => {
+    changeBg(store.coverType);
+  }, 15000);
 });
 
 onBeforeUnmount(() => {
-  clearTimeout(imgTimeout.value);
+  clearInterval(bgInterval.value); // 清除定时器
+  clearTimeout(imgTimeout.value); // 清除图片加载超时
 });
 </script>
 
