@@ -5,6 +5,11 @@ IMAGE_NAME="home"
 CONTAINER_NAME="home"
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 
+# 拉取最新代码
+echo "拉取最新代码..."
+git reset --hard # 清理任何未提交的更改
+git pull
+
 # 停止并删除旧的容器
 echo "检查并停止旧的容器..."
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
