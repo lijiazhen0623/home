@@ -139,7 +139,7 @@ onMounted(() => {
   // 重新加载一次背景
   bgInterval.value = setInterval(() => {
     changeBg(store.coverType);
-  }, 15000);
+  }, 25000);
 });
 
 onBeforeUnmount(() => {
