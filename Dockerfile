@@ -2,8 +2,8 @@
 FROM node:18 AS builder
 WORKDIR /app
 
-# 设置 npm 源为淘宝镜像，加速依赖安装
-RUN npm config set registry https://registry.npmmirror.com
+# 设置 npm 源，加速依赖安装
+RUN npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
