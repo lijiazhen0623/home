@@ -27,6 +27,9 @@ WORKDIR /app
 # 复制构建后的文件
 COPY --from=builder /app/dist ./dist
 
+# 设置 npm 源，加速依赖安装
+RUN npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+
 # 安装 http-server
 RUN npm install -g http-server
 
