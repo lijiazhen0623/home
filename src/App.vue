@@ -18,22 +18,25 @@
           </section>
         </div>
         <!-- 移动端菜单按钮 -->
-        <Icon
-          class="menu"
-          size="24"
-          v-show="!store.backgroundShow"
-          @click="store.mobileOpenState = !store.mobileOpenState"
-        >
-          <component :is="store.mobileOpenState ? CloseSmall : HamburgerButton" />
-        </Icon>
-        <Icon
-          class="menu_background"
-          size="24"
-          v-show="!store.backgroundShow && store.mobileOpenState"
-          @click="store.backgroundShow = !store.backgroundShow"
-        >
-          <Pic></Pic>
-        </Icon>
+        <div class="menu-container">
+          <Icon
+            class="menu"
+            size="24"
+            v-show="!store.backgroundShow"
+            @click="store.mobileOpenState = !store.mobileOpenState"
+          >
+            <component :is="store.mobileOpenState ? CloseSmall : HamburgerButton" />
+          </Icon>
+          <!-- 壁纸 -->
+          <Icon
+            class="menu_background"
+            size="24"
+            v-show="!store.backgroundShow && store.mobileOpenState"
+            @click="store.backgroundShow = !store.backgroundShow"
+          >
+            <Pic></Pic>
+          </Icon>
+        </div>
 
         <!-- 页脚 -->
         <Transition name="fade" mode="out-in">
@@ -46,7 +49,7 @@
 
 <script setup>
 import { helloInit, checkDays } from "@/utils/getTime.js";
-import { HamburgerButton, CloseSmall,Pic } from "@icon-park/vue-next";
+import { HamburgerButton, CloseSmall, Pic } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import { Icon } from "@vicons/utils";
 import Loading from "@/components/Loading.vue";
@@ -190,37 +193,21 @@ onBeforeUnmount(() => {
       padding: 0 2vw;
     }
   }
-  .menu {
+  .menu-container {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     top: 84%;
     left: calc(50% - 28px);
-    width: 56px;
-    height: 34px;
-    background: rgb(0 0 0 / 20%);
-    backdrop-filter: blur(10px);
-    border-radius: 6px;
-    transition: transform 0.3s;
-    animation: fade 0.5s;
-    &:active {
-      transform: scale(0.95);
-    }
-    .i-icon {
-      transform: translateY(2px);
-    }
-    @media (min-width: 721px) {
-      display: none;
-    }
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center;
+    gap: 10px; /* 可选，图标之间的间距 */
   }
+
+  .menu,
   .menu_background {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 90%;
-    left: calc(50% - 28px);
     width: 56px;
     height: 34px;
     background: rgb(0 0 0 / 20%);
@@ -228,14 +215,20 @@ onBeforeUnmount(() => {
     border-radius: 6px;
     transition: transform 0.3s;
     animation: fade 0.5s;
-    &:active {
-      transform: scale(0.95);
-    }
-    .i-icon {
-      transform: translateY(2px);
-    }
-    @media (min-width: 721px) {
-      display: none;
+  }
+
+  .menu:active,
+  .menu_background:active {
+    transform: scale(0.95);
+  }
+
+  .i-icon {
+    transform: translateY(2px);
+  }
+
+  @media (min-width: 721px) {
+    .menu-container {
+      display: none; /* 在大于 721px 宽度时隐藏 */
     }
   }
 
