@@ -1,25 +1,21 @@
-简体中文 | [English](./README_EN.md)
-
 > [!IMPORTANT]
 > ## 致大家
 > 此项目最初只是一个简单的主页。然而，随着越来越多的小伙伴发现了这个项目，它受到了大量本不应有的关注。而且，此项目作为初学前端的作品，其代码相当杂乱且质量低下。此外，该项目还遭到众多不明资源站或下载站的倒卖，致使许多不明真相的购买者从源代码中找到本人的联系方式进行问题咨询或提出功能需求。但由于目前个人生活方面的原因，且本人未曾从此项目获取任何收益，所以已无力维护此项目。该仓库不会存档，会积极接受各位大佬的 PR，不过不会针对任何新功能或 Bug 做出更新，敬请谅解！
 
 <p>
-<strong><h2>無名の主页</h2></strong>
+<strong><h2>LJZの主页</h2></strong>
 简单的小主页，原来的看够了，重新弄了一个
 </p>
 
-![無名の主页](/screenshots/main.jpg)
+![LJZの主页](/screenshots/main.jpg)
 
 > 主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体，这里是 [完整字体](https://file.imsyy.top/font/Other/Pacifico-Regular.ttf)，若无法下载，可将字体目录下的 `Pacifico-Regular-all.ttf` 进行替换
 
 ### 👀 Demo
 
-> 由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
+> 由于缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
 
-- [無名の主页](https://www.imsyy.top)
-- [無名の主页 - Dev](https://home-imsyy.vercel.app)
-- [無名の主页 - 备用线路](https://home-5iw.pages.dev)
+- [LJZの主页](https://jiazhen.wang)
 
 ### 🎉 功能
 
@@ -75,10 +71,12 @@ pnpm build
 > 安装及配置 Docker 将不在此处说明，请自行解决
 
 ```bash
-# 构建
-docker build -t home .
-# 运行
-docker run -p 12445:12445 -d home
+#赋予执行权限
+chmod +x deploy.sh
+
+#执行
+./deploy.sh
+
 ```
 
 ### ⚙️ Vercel 部署
@@ -105,7 +103,7 @@ docker run -p 12445:12445 -d home
 其中 `icon` 网站链接的图标可以在 `src/components/Links/index.vue` 中添加:
 
 ```js
-// 可前往 https://www.xicons.org 自行挑选并在此处引入
+// 可前往 https://xicons.org 自行挑选并在此处引入
 // 此处引入的是 fa 类型
 import {
   Link,
@@ -166,14 +164,9 @@ VITE_SONG_ID = "7452421335"
 
 现采用 `HarmonyOS Sans` 开源字体，采用字体拆分，提升加载速度
 
-> 由于本站 `CDN` 已开启防盗链，**非本站域名不可访问**，请将字体引入链接更改为下方内容，否则 **自定义字体将失效**
+> 请将字体引入链接更改为下方内容，否则 **自定义字体将失效**
 >
 > `https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css`
-
-<details>
-<summary>旧版方式</summary>
-
-> 由于本项目引入了中文字体，需要压缩中文字体以提高网页加载速度（ 也可以取消使用中文字体 ）
 
 #### 中文字体去除繁体
 
@@ -240,9 +233,3 @@ if (type == 0) {
 - [教书先生 API](https://api.oioweb.cn/doc/weather/GetWeather)
 - [高德开放平台](https://lbs.amap.com/)
 - [Hitokoto 一言](https://hitokoto.cn/)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=imsyy/home&type=Date)](https://star-history.com/#imsyy/home&Date)
-
-<a title="SSL" target="_blank" href="https://myssl.com/seal/detail?domain=blog.imsyy.top"><img src="https://img.shields.io/badge/MySSL-安全认证-brightgreen"></a>&nbsp;<a title="CDN" target="_blank" href="https://cdnjs.com/"><img src="https://img.shields.io/badge/CDN-Cloudflare-blue"></a>&nbsp;<a title="Copyright" target="_blank" href="https://imsyy.top/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202020--2023-%E7%84%A1%E5%90%8D-red"></a>
