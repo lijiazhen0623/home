@@ -5,7 +5,7 @@
     <!-- 壁纸 -->
     <Background @loadComplete="loadComplete" />
     <!-- 主界面 -->
-    <Transition name="fade" mode="out-in" @dblclick="dblclick()">
+    <Transition name="fade" mode="out-in">
       <main id="main" v-if="store.imgLoadStatus">
         <div class="container" v-show="!store.backgroundShow">
           <section class="all" v-show="!store.setOpenState">
@@ -76,16 +76,6 @@ const loadComplete = () => {
     helloInit();
     // 默哀模式
     checkDays();
-  });
-};
-
-//双击事件
-const dblclick = () => {
-  console.log("双击事件");
-  store.backgroundShow = !store.backgroundShow;
-  ElMessage({
-    message: `已${store.backgroundShow ? "开启" : "退出"}壁纸展示状态`,
-    grouping: true,
   });
 };
 
