@@ -1,15 +1,15 @@
 <template>
-  <div :class="store.backgroundShow ? 'cover show' : 'cover'" @dblclick="dblclick()">
-    <transition name="fade" mode="out-in" :key="bgUrl">
+  <div :class="store.backgroundShow ? 'cover show' : 'cover'" :key="bgUrl">
+    <transition name="fade" mode="out-in">
       <img
-      v-show="store.imgLoadStatus"
-      :src="bgUrl"
-      class="bg"
-      alt="cover"
-      @load="imgLoadComplete"
-      @error.once="imgLoadError"
-      @animationend="imgAnimationEnd"
-    />
+        v-show="store.imgLoadStatus"
+        :src="bgUrl"
+        class="bg"
+        alt="cover"
+        @load="imgLoadComplete"
+        @error.once="imgLoadError"
+        @animationend="imgAnimationEnd"
+      />
     </transition>
     <div :class="store.backgroundShow ? 'gray hidden' : 'gray'" />
     <Transition name="fade" mode="out-in">
@@ -33,10 +33,10 @@ import { Error } from "@icon-park/vue-next";
 
 const store = mainStore();
 const bgUrl = ref(null);
-const imgKey = ref(1);
 const imgTimeout = ref(null);
 const bgInterval = ref(null); // 存储定时器 ID
 const emit = defineEmits(["loadComplete"]);
+const firstLoadImg = ref(true);
 
 // 壁纸随机数
 // 请依据文件夹内的图片个数修改 Math.random() 后面的第一个数字
@@ -58,7 +58,6 @@ const changeBg = (type) => {
   } else {
     bgUrl.value = "https://api.rls.icu/adaptive";
   }
-  imgKey.value = imgKey.value + 1
   console.log("壁纸加载...");
 };
 
@@ -71,9 +70,12 @@ const imgLoadComplete = () => {
 
 // 图片动画完成
 const imgAnimationEnd = () => {
-  console.log("壁纸加载且动画完成");
-  // 加载完成事件
-  emit("loadComplete");
+  if (firstLoadImg.value) {
+    console.log("壁纸加载且动画完成");
+    // 加载完成事件
+    emit("loadComplete");
+    firstLoadImg.value = false;
+  }
 };
 
 // 图片显示失败
@@ -97,16 +99,11 @@ watch(
   },
 );
 
-//双击事件
-const dblclick = () => {
-  store.backgroundShow = !store.backgroundShow;
-  ElMessage({
-    message: `已${store.backgroundShow ? "开启" : "退出"}壁纸展示状态`,
-    grouping: true,
-  });
-};
-
 const downloadByBlob = (url, name) => {
+  ElMessage({
+    dangerouslyUseHTMLString: true,
+    message: `准备下载...`,
+  });
   let image = new Image();
   image.setAttribute("crossOrigin", "anonymous");
   image.src = url;
@@ -139,7 +136,7 @@ onMounted(() => {
   // 重新加载一次背景
   bgInterval.value = setInterval(() => {
     changeBg(store.coverType);
-  }, 25000);
+  }, 30000);
 });
 
 onBeforeUnmount(() => {
