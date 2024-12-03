@@ -41,15 +41,19 @@ const firstLoadImg = ref(true);
 // 壁纸随机数
 // 请依据文件夹内的图片个数修改 Math.random() 后面的第一个数字
 const bgRandom = Math.floor(Math.random() * 10 + 1);
+const backgroundUrl = import.meta.env.VITE_BACKGROUND_URL;
 
 // 更换壁纸链接
 const changeBg = (type) => {
+  console.log(backgroundUrl)
   if (type == 0) {
     // bgUrl.value = `/images/background${bgRandom}.jpg`;
-    fetch("https://api.rls.icu/adaptive")
+    fetch(backgroundUrl)
       .then((response) => response.blob())
       .then((blob) => {
+        console.log(blob)
         bgUrl.value = URL.createObjectURL(blob);
+        console.log(bgUrl.value)
       });
   } else if (type == 1) {
     bgUrl.value = "https://api.dujin.org/bing/1920.php";
