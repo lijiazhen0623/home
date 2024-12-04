@@ -12,21 +12,9 @@
     "_blank": true
   },
   {
-    "icon": "Compass",
-    "name": "起始页",
-    "link": "#",
-    "_blank": false
-  },
-  {
-    "icon": "Book",
-    "name": "网址集",
-    "link": "#",
-    "_blank": false
-  },
-  {
-    "icon": "Fire",
-    "name": "今日热榜",
-    "link": "#",
-    "_blank": false
+    "icon": "Code",
+    "name": "随机图片Api",
+    "link": "https://blog.jiazhen.wang/archives/er-ci-yuan-tu-pian-api",
+    "_blank": true
   }
 ]
