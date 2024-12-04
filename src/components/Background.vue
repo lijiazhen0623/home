@@ -45,7 +45,6 @@ const backgroundUrl = import.meta.env.VITE_BACKGROUND_URL;
 
 // 更换壁纸链接
 const changeBg = (type) => {
-  console.log(backgroundUrl)
   if (type == 0) {
     // bgUrl.value = `/images/background${bgRandom}.jpg`;
     fetch(backgroundUrl)
