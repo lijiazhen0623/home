@@ -39,20 +39,22 @@ const emit = defineEmits(["loadComplete"]);
 const firstLoadImg = ref(true);
 
 // 壁纸随机数
-// 请依据文件夹内的图片个数修改 Math.random() 后面的第一个数字
 const bgRandom = Math.floor(Math.random() * 10 + 1);
 const backgroundUrl = import.meta.env.VITE_BACKGROUND_URL;
 
+let isLoading = ref(false);  // 添加一个标志来跟踪图片是否加载中
+
 // 更换壁纸链接
 const changeBg = (type) => {
+  if (isLoading.value) return; // 如果正在加载，就不进行新的加载
+
+  isLoading.value = true; // 标记为正在加载
+
   if (type == 0) {
-    // bgUrl.value = `/images/background${bgRandom}.jpg`;
     fetch(backgroundUrl)
       .then((response) => response.blob())
       .then((blob) => {
-        console.log(blob)
         bgUrl.value = URL.createObjectURL(blob);
-        console.log(bgUrl.value)
       });
   } else if (type == 1) {
     bgUrl.value = "https://api.dujin.org/bing/1920.php";
@@ -79,6 +81,8 @@ const imgAnimationEnd = () => {
     emit("loadComplete");
     firstLoadImg.value = false;
   }
+
+  isLoading.value = false; // 图片加载完成后，标记为加载结束
 };
 
 // 图片显示失败
@@ -92,6 +96,7 @@ const imgLoadError = () => {
     }),
   });
   bgUrl.value = `/images/background${bgRandom}.jpg`;
+  isLoading.value = false; // 图片加载失败后，标记为加载结束
 };
 
 // 监听壁纸切换
@@ -136,9 +141,11 @@ onMounted(() => {
   // 加载壁纸
   changeBg(store.coverType);
 
-  // 重新加载一次背景
+  // 重新加载一次背景，确保在图片加载完成后才开始下一次加载
   bgInterval.value = setInterval(() => {
-    changeBg(store.coverType);
+    if (!isLoading.value) {
+      changeBg(store.coverType);
+    }
   }, 30000);
 });
 
