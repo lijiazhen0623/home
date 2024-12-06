@@ -7,8 +7,23 @@ DOCKER_COMPOSE_FILE="docker-compose.yml"
 
 # 拉取最新代码
 echo "拉取最新代码..."
-git reset --hard # 清理任何未提交的更改
-git pull
+RETRY_LIMIT=5  # 最大重试次数
+RETRY_COUNT=0
+SUCCESS=0
+
+# 重试拉取代码
+while [ $RETRY_COUNT -lt $RETRY_LIMIT ]; do
+  git reset --hard # 清理任何未提交的更改
+  git pull && SUCCESS=1 && break  # 如果拉取成功，退出循环
+  RETRY_COUNT=$((RETRY_COUNT + 1))
+  echo "拉取代码失败，正在重试... (尝试次数: $RETRY_COUNT)"
+  sleep 5  # 等待5秒后重试
+done
+
+if [ $SUCCESS -eq 0 ]; then
+  echo "拉取代码失败，已达到最大重试次数($RETRY_LIMIT)。退出脚本。"
+  exit 1
+fi
 
 # 停止并删除旧的容器
 echo "检查并停止旧的容器..."
