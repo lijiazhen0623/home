@@ -16,5 +16,11 @@
     "name": "随机图片Api",
     "link": "https://blog.jiazhen.wang/archives/er-ci-yuan-tu-pian-api",
     "_blank": true
+  },
+  {
+    "icon": "LaptopCode",
+    "name": "站点检测",
+    "link": "https://test.jiazhen.wang",
+    "_blank": true
   }
 ]
