@@ -19,6 +19,7 @@
           <div :key="descriptionText.hello + descriptionText.text" class="text">
             <p>{{ descriptionText.hello }}</p>
             <p>{{ descriptionText.text }}</p>
+            <p>本站访问次数: <span id="page_pv"><span id="loading-message" style="display: inline;">...</span></span> 本站访问人数: <span id="page_uv"><span id="loading-message" style="display: inline;">...</span></span></p>
           </div>
         </Transition>
         <Icon size="16">
