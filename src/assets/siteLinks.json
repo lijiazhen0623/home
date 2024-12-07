@@ -22,5 +22,11 @@
     "name": "站点检测",
     "link": "https://test.jiazhen.wang",
     "_blank": true
+  },
+  {
+    "icon": "Link",
+    "name": "短链接",
+    "link": "https://s.jiazhen.us.kg",
+    "_blank": true
   }
 ]
