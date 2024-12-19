@@ -28,5 +28,11 @@
     "name": "短链接",
     "link": "https://s.jiazhen.us.kg",
     "_blank": true
+  },
+  {
+    "icon": "Images",
+    "name": "图床",
+    "link": "https://imagebed.jiazhen.us.kg",
+    "_blank": true
   }
 ]
