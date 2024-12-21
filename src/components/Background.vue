@@ -42,7 +42,13 @@ const firstLoadImg = ref(true);
 const bgRandom = Math.floor(Math.random() * 10 + 1);
 const backgroundUrl = import.meta.env.VITE_BACKGROUND_URL;
 
-let isLoading = ref(false);  // 添加一个标志来跟踪图片是否加载中
+let isLoading = ref(false); // 添加一个标志来跟踪图片是否加载中
+
+// 判断是否是手机端
+const isMobile = computed(() => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return /iphone|ipod|android|windows phone|blackberry|mobile/i.test(userAgent);
+});
 
 // 更换壁纸链接
 const changeBg = (type) => {
@@ -51,11 +57,20 @@ const changeBg = (type) => {
   isLoading.value = true; // 标记为正在加载
 
   if (type == 0) {
-    fetch(backgroundUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        bgUrl.value = URL.createObjectURL(blob);
-      });
+    if (firstLoadImg.value) {
+      bgUrl.value = isMobile.value
+        ? import.meta.env.VITE_FIRST_PHONE_BACKGROUND_URL
+        : import.meta.env.VITE_FIRST_WINDOW_BACKGROUND_URL;
+        if(!bgUrl.value){
+          bgUrl.value = backgroundUrl;
+        }
+    } else {
+      fetch(backgroundUrl)
+        .then((response) => response.blob())
+        .then((blob) => {
+          bgUrl.value = URL.createObjectURL(blob);
+        });
+    }
   } else if (type == 1) {
     bgUrl.value = "https://api.dujin.org/bing/1920.php";
   } else if (type == 2) {
