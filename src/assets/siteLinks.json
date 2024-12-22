@@ -30,9 +30,15 @@
     "_blank": true
   },
   {
-    "icon": "Images",
+    "icon": "ImageRegular",
     "name": "图床",
     "link": "https://imagebed.jiazhen.us.kg",
+    "_blank": true
+  },
+  {
+    "icon": "FileImageRegular",
+    "name": "图片压缩",
+    "link": "https://pic-smaller.jiazhenserver.us.kg",
     "_blank": true
   }
 ]
