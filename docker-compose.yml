@@ -10,3 +10,5 @@ services:
     ports:
       - "12445:12445"
     restart: always
+    volumes:
+      - /opt/home/.env:/app/.env
