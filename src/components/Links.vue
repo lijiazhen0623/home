@@ -42,8 +42,8 @@
 
 <script setup>
 import { Icon } from "@vicons/utils";
-// 可前往 https://xicons.org 自行挑选并在此处引入
-import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode, Code,ImageRegular,FileImageRegular,CameraSwitch20Regular } from "@vicons/fa"; // 注意使用正确的类别
+// 可前往 https://xicons.org 自行挑选fa并在此处引入
+import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode, Code,ImageRegular,FileImageRegular,ExchangeAlt } from "@vicons/fa"; // 注意使用正确的类别
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
@@ -74,7 +74,7 @@ const siteIcon = {
   Link,
   ImageRegular,
   FileImageRegular,
-  CameraSwitch20Regular
+  ExchangeAlt
 };
 
 // 链接跳转
