@@ -2,7 +2,7 @@
   {
     "icon": "Blog",
     "name": "博客",
-    "link": "https://blog.jiazhen.wang/",
+    "link": "https://lijiazhen0623.github.io/",
     "_blank": true
   },
   {
@@ -14,7 +14,7 @@
   {
     "icon": "Code",
     "name": "随机图片Api",
-    "link": "https://blog.jiazhen.wang/archives/er-ci-yuan-tu-pian-api",
+    "link": "https://lijiazhen0623.github.io/2025/03/31/%E9%9A%8F%E6%9C%BA%E4%BA%8C%E6%AC%A1%E5%85%83%E5%9B%BE%E7%89%87API/",
     "_blank": true
   },
   {
@@ -26,19 +26,25 @@
   {
     "icon": "Link",
     "name": "短链接",
-    "link": "https://s.jiazhen.us.kg",
+    "link": "s.656777.xyz",
     "_blank": true
   },
   {
     "icon": "ImageRegular",
     "name": "图床",
-    "link": "https://imagebed.5213334.xyz",
+    "link": "https://imagebed.5213334.xyz/",
     "_blank": true
   },
   {
     "icon": "FileImageRegular",
     "name": "图片压缩",
-    "link": "https://pic-smaller.jiazhenserver.us.kg",
+    "link": "https://pic-smaller.656777.xyz/",
+    "_blank": true
+  },
+  {
+    "icon": "CameraSwitch20Regular",
+    "name": "订阅转换",
+    "link": "https://sub.5213334.xyz/",
     "_blank": true
   }
 ]
